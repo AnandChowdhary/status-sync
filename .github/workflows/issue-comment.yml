@@ -1,0 +1,16 @@
+name: "Status Sync CI: Issue Comment"
+on:
+  issue_comment:
+    types: [created]
+jobs:
+  bookshelf-action:
+    name: Status Sync
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Run Status Sync
+        uses: AnandChowdhary/status-sync@HEAD
+        with:
+          command: "onIssueComment"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
