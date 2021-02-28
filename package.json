@@ -4,7 +4,7 @@
   "description": "This repository contains a GitHub Actions workflow that lets you set and sync your real-time status on Slack, GitHub, and other places.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -25,6 +25,21 @@
     "url": "https://github.com/AnandChowdhary/status-sync/issues"
   },
   "homepage": "https://github.com/AnandChowdhary/status-sync#readme",
+  "jest": {
+    "roots": [
+      "<rootDir>/src/"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx"
+    ],
+    "automock": false
+  },
   "dependencies": {
     "@actions/core": "^1.2.6",
     "@actions/github": "^4.0.0",
@@ -32,6 +47,10 @@
     "node-emoji": "^1.10.0"
   },
   "devDependencies": {
-    "@types/node-emoji": "^1.8.1"
+    "@types/jest": "^26.0.20",
+    "@types/node-emoji": "^1.8.1",
+    "jest": "^26.6.3",
+    "ts-jest": "^26.5.2",
+    "typescript": "^4.2.2"
   }
 }
