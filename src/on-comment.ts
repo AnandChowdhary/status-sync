@@ -1,6 +1,7 @@
 import type { Context } from "@actions/github/lib/context";
 import type { GitHub } from "@actions/github/lib/utils";
-import { unemojify } from "node-emoji";
+import { parseComment } from "./helpers/parser";
+import { updateSlackStatus } from "./integrations/slack";
 
 export const onIssueComment = async ({
   context,
@@ -21,6 +22,8 @@ export const onIssueComment = async ({
   const lastComment = data.pop();
   if (!lastComment || !lastComment.body) return;
 
-  const body = unemojify(lastComment.body);
-  const emoji = body.search(/:[^:\s]*(?:::[^:\s]*)*:/);
+  const result = parseComment(lastComment.body);
+  for await (const helper of [updateSlackStatus]) {
+    await helper(result);
+  }
 };
