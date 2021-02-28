@@ -28,6 +28,10 @@
   "dependencies": {
     "@actions/core": "^1.2.6",
     "@actions/github": "^4.0.0",
-    "@slack/web-api": "^6.0.0"
+    "@slack/web-api": "^6.0.0",
+    "node-emoji": "^1.10.0"
+  },
+  "devDependencies": {
+    "@types/node-emoji": "^1.8.1"
   }
 }
