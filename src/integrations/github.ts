@@ -2,7 +2,7 @@ import { GitHubProfileStatus } from "github-profile-status";
 import type { Status } from "../interfaces";
 
 const profileStatus = new GitHubProfileStatus({
-  token: process.env.GITHUB_TOKEN || "",
+  token: process.env.GH_PAT || "",
 });
 
 export const updateGitHubStatus = async (status: Status) => {
