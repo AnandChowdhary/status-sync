@@ -19,3 +19,5 @@ jobs:
         with:
           personal_token: ${{ secrets.GH_BOT_PAT }}
           publish_dir: ./public
+          user_name: "FindingAnand"
+          user_email: "bot@anandchowdhary.com"
