@@ -4,7 +4,8 @@
   "description": "This repository contains a GitHub Actions workflow that lets you set and sync your real-time status on Slack, GitHub, and other places.",
   "main": "dist/index.js",
   "scripts": {
-    "build": "ncc build --source-map",
+    "build": "tsc",
+    "package": "ncc build --source-map",
     "test": "jest"
   },
   "repository": {
