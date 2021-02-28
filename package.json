@@ -1,0 +1,28 @@
+{
+  "name": "status-sync",
+  "version": "0.0.0",
+  "description": "This repository contains a GitHub Actions workflow that lets you set and sync your real-time status on Slack, GitHub, and other places.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnandChowdhary/status-sync.git"
+  },
+  "keywords": [
+    "status",
+    "github",
+    "slack",
+    "life",
+    "life-data",
+    "github actions",
+    "typescript"
+  ],
+  "author": "Anand Chowdhary <mail@anandchowdhary.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AnandChowdhary/status-sync/issues"
+  },
+  "homepage": "https://github.com/AnandChowdhary/status-sync#readme"
+}
