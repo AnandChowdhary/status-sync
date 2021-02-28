@@ -24,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/AnandChowdhary/status-sync/issues"
   },
-  "homepage": "https://github.com/AnandChowdhary/status-sync#readme"
+  "homepage": "https://github.com/AnandChowdhary/status-sync#readme",
+  "dependencies": {
+    "@slack/web-api": "^6.0.0"
+  }
 }
