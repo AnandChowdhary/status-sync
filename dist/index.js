@@ -41,6 +41,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.run = void 0;
 const core_1 = __nccwpck_require__(2186);
 const github_1 = __nccwpck_require__(5438);
+const new_issue_1 = __nccwpck_require__(114);
 const on_comment_1 = __nccwpck_require__(6785);
 const token = core_1.getInput("token") || process.env.GH_PAT || process.env.GITHUB_TOKEN;
 const run = async () => {
@@ -53,6 +54,8 @@ const run = async () => {
     const octokit = github_1.getOctokit(token);
     if (COMMAND === "onIssueComment")
         return on_comment_1.onIssueComment({ context: github_1.context, octokit });
+    if (COMMAND === "onNewIssue")
+        return new_issue_1.onNewIssue({ context: github_1.context, octokit });
     throw new Error("Command not recognized");
 };
 exports.run = run;
@@ -139,6 +142,31 @@ exports.updateSlackStatus = updateSlackStatus;
 
 /***/ }),
 
+/***/ 114:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.onNewIssue = void 0;
+const onNewIssue = async ({ context, octokit, }) => {
+    await octokit.issues.addLabels({
+        owner: context.issue.owner,
+        repo: context.issue.repo,
+        issue_number: context.issue.number,
+        labels: ["status"],
+    });
+    await octokit.issues.lock({
+        owner: context.issue.owner,
+        repo: context.issue.repo,
+        issue_number: context.issue.number,
+    });
+};
+exports.onNewIssue = onNewIssue;
+//# sourceMappingURL=new-issue.js.map
+
+/***/ }),
+
 /***/ 6785:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
@@ -153,6 +181,7 @@ const slack_1 = __nccwpck_require__(8483);
 const onIssueComment = async ({ context, octokit, }) => {
     const oneHourAgo = new Date();
     oneHourAgo.setHours(oneHourAgo.getHours() - 1);
+    console.log(JSON.stringify(context.issue, null, 2));
     const { data } = await octokit.issues.listComments({
         owner: context.repo.owner,
         repo: context.repo.repo,
