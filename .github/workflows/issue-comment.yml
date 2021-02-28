@@ -12,5 +12,10 @@ jobs:
         with:
           command: "onIssueComment"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_PAT: ${{ secrets.GH_PAT }}
           SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
+      - name: Add API
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
