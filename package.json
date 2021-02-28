@@ -2,7 +2,7 @@
   "name": "status-sync",
   "version": "0.0.0",
   "description": "This repository contains a GitHub Actions workflow that lets you set and sync your real-time status on Slack, GitHub, and other places.",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "ncc build --source-map",
     "test": "jest"
