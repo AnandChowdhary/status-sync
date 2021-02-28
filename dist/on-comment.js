@@ -2,6 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.onIssueComment = void 0;
 const parser_1 = require("./helpers/parser");
+const api_1 = require("./integrations/api");
+const github_1 = require("./integrations/github");
 const slack_1 = require("./integrations/slack");
 const onIssueComment = async ({ context, octokit, }) => {
     const oneHourAgo = new Date();
@@ -16,7 +18,11 @@ const onIssueComment = async ({ context, octokit, }) => {
     if (!lastComment || !lastComment.body)
         return;
     const result = parser_1.parseComment(lastComment.body);
-    for await (const helper of [slack_1.updateSlackStatus]) {
+    for await (const helper of [
+        slack_1.updateSlackStatus,
+        github_1.updateGitHubStatus,
+        api_1.generateApi,
+    ]) {
         await helper(result);
     }
 };
