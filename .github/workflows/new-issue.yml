@@ -1,0 +1,15 @@
+name: "Status Sync CI: New Issue"
+on:
+  issues:
+    types: [opened]
+jobs:
+  status-sync:
+    name: Status Sync
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Run Status Sync
+        uses: AnandChowdhary/status-sync@HEAD
+        with:
+          command: "onNewIssue"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

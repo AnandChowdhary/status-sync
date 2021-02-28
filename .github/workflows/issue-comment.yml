@@ -3,7 +3,7 @@ on:
   issue_comment:
     types: [created]
 jobs:
-  bookshelf-action:
+  status-sync:
     name: Status Sync
     runs-on: ubuntu-18.04
     steps:
