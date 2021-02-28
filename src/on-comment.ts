@@ -1,6 +1,7 @@
 import type { Context } from "@actions/github/lib/context";
 import type { GitHub } from "@actions/github/lib/utils";
 import { parseComment } from "./helpers/parser";
+import { updateGitHubStatus } from "./integrations/github";
 import { updateSlackStatus } from "./integrations/slack";
 
 export const onIssueComment = async ({
@@ -23,7 +24,7 @@ export const onIssueComment = async ({
   if (!lastComment || !lastComment.body) return;
 
   const result = parseComment(lastComment.body);
-  for await (const helper of [updateSlackStatus]) {
+  for await (const helper of [updateSlackStatus, updateGitHubStatus]) {
     await helper(result);
   }
 };
