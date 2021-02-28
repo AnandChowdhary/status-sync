@@ -6,10 +6,12 @@ const slack = new WebClient(token);
 
 export const updateSlackStatus = async (status: Status) => {
   await slack.users.profile.set({
-    status_text: status.text,
-    status_emoji: status.emoji,
-    status_expiration: status.expiration
-      ? Math.floor(status.expiration.getTime() / 1000)
-      : 0,
+    profile: JSON.stringify({
+      status_text: status.text,
+      status_emoji: status.emoji,
+      status_expiration: status.expiration
+        ? Math.floor(status.expiration.getTime() / 1000)
+        : 0,
+    }),
   });
 };
