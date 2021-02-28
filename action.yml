@@ -1,0 +1,13 @@
+name: "Status Sync"
+description: "Set and sync your real-time status on Slack & GitHub"
+author: "Anand Chowdhary <https://github.com/AnandChowdhary>"
+inputs:
+  command:
+    required: true
+    description: "Command to run"
+runs:
+  using: "node12"
+  main: "dist/index.js"
+branding:
+  icon: "book-open"
+  color: "purple"
