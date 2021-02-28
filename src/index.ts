@@ -1,5 +1,6 @@
 import { debug, getInput, setFailed } from "@actions/core";
 import { context, getOctokit } from "@actions/github";
+import { onNewIssue } from "./new-issue";
 import { onIssueComment } from "./on-comment";
 
 const token =
@@ -13,6 +14,7 @@ export const run = async () => {
 
   const octokit = getOctokit(token);
   if (COMMAND === "onIssueComment") return onIssueComment({ context, octokit });
+  if (COMMAND === "onNewIssue") return onNewIssue({ context, octokit });
   throw new Error("Command not recognized");
 };
 
