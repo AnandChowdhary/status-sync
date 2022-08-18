@@ -43,7 +43,7 @@
     "automock": false
   },
   "dependencies": {
-    "@actions/core": "^1.2.6",
+    "@actions/core": "^1.9.1",
     "@actions/github": "^4.0.0",
     "@slack/web-api": "^6.0.0",
     "github-profile-status": "^1.0.0",
